@@ -25,30 +25,44 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] Describe the game's purpose.
+  This is a simple number guessing game built with Streamlit. You pick a difficulty, guess a number, and get hints until you win or run out of attempts.
+- [x] Detail which bugs you found.
+  - The hint was backwards: guessing too high told you to "Go Higher" instead of "Go Lower" (and the same for too low).
+  - Clicking "New Game" after winning or losing didn't actually let you play again — it froze the game.
+  - The starter pytest tests were checking the wrong thing, so they failed even when the code worked.
+- [x] Explain what fixes you applied.
+  - Fixed `check_guess` so the hint text matches the actual outcome ("Too High" now says go lower, "Too Low" now says go higher).
+  - Fixed "New Game" to also reset the game status, the guessed number range, and the guess history, so a fresh game actually starts.
+  - Refactored the game logic (`get_range_for_difficulty`, `parse_guess`, `check_guess`, `update_score`) out of `app.py` and into `logic_utils.py`.
+  - Fixed the starter tests and added new tests that specifically check the hint bug is fixed.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Run the app and pick a difficulty (Easy, Normal, or Hard) from the sidebar.
+2. Type a guess and click "Submit Guess."
+3. Read the hint — it now correctly tells you to go higher or lower.
+4. Keep guessing until you hit the secret number and see the win message.
+5. Click "New Game" to reset and play again as many times as you want.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+pytest tests/ -v
+
+tests/test_game_logic.py::test_winning_guess PASSED
+tests/test_game_logic.py::test_guess_too_high PASSED
+tests/test_game_logic.py::test_guess_too_low PASSED
+tests/test_game_logic.py::test_too_high_hint_tells_player_to_go_lower PASSED
+tests/test_game_logic.py::test_too_low_hint_tells_player_to_go_higher PASSED
+
+========================= 5 passed in 0.02s =========================
 ```
 
 ## 🚀 Stretch Features
 
-- [ ] [If you choose to complete Challenge 4, describe the Enhanced UI changes here — a screenshot is optional]
+- [ ] Did not attempt Challenge 4 (Enhanced UI) for this submission.

@@ -62,4 +62,4 @@ Writing down the bugs I find before asking AI to fix them so I know what "fixed"
 - What is one thing you would do differently next time you work with AI on a coding task?
 I'd run the tests first before changing anything so I know what was already broken.
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
-I learned AI code can run with no errors and still be wrong, so I can't just trust it without checking.
+I learned AI code can run with no errors and still be wrong, so I can't just trust it without checking. I need to work with the AI as a partner not something that does everything for me.
